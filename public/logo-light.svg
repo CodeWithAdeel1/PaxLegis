@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 64" role="img" aria-label="PaxLegis">
+  <rect width="64" height="64" rx="12" fill="#fff"/>
+  <g fill="none" stroke="#c9a24a" stroke-width="7"><path d="M23.5 14V50"/><path d="M23.5 17.5H35a9.5 9.5 0 0 1 0 19H23.5"/></g>
+  <rect x="15" y="52" width="34" height="3" fill="#c9a24a"/>
+  <text x="78" y="36" font-family="Georgia,serif" font-size="27" font-weight="700" fill="#fff">PaxLegis</text>
+  <text x="79" y="53" font-family="Arial,sans-serif" font-size="9" letter-spacing="1.2" fill="#e0d6bd">ADVOCATES &amp; LEGAL CONSULTANTS</text>
+</svg>
