@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { ClipboardList, ExternalLink, KeyRound, LayoutDashboard, LogOut, Menu, X } from 'lucide-react';
+import { BriefcaseBusiness, ClipboardList, ExternalLink, KeyRound, LayoutDashboard, LogOut, Menu, X } from 'lucide-react';
 
 export default function AdminNav({ username }) {
   const router = useRouter();
@@ -25,6 +25,8 @@ export default function AdminNav({ username }) {
   const navLinks = [
     { href: '/admin', label: 'Dashboard', Icon: LayoutDashboard, active: pathname === '/admin' },
     { href: '/admin#admin-requests', label: 'All Requests', Icon: ClipboardList, active: pathname.startsWith('/admin/requests') },
+    { href: '/admin/jobs', label: 'Careers & Jobs', Icon: BriefcaseBusiness, active: pathname.startsWith('/admin/jobs') },
+    { href: '/admin/applications', label: 'Job Applications', Icon: BriefcaseBusiness, active: pathname.startsWith('/admin/applications') },
     { href: '/admin/change-password', label: 'Change Password', Icon: KeyRound, active: pathname === '/admin/change-password' },
   ];
 

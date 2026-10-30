@@ -4,7 +4,7 @@ import AdminNav from '../../components/AdminNav';
 import { pool } from '../../lib/db';
 import { buildRequestWhere, PAGE_SIZE, readFilters } from '../../lib/admin-requests';
 import { getAdminSession } from '../../lib/admin-session';
-import { CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, Clock3, FileSpreadsheet, FileText, Inbox, Search, UsersRound } from 'lucide-react';
+import { BriefcaseBusiness, CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, Clock3, FileSpreadsheet, FileText, Inbox, Search, UsersRound } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -67,7 +67,7 @@ export default async function AdminDashboard({ searchParams }) {
   const filters = readFilters(params);
   const where = buildRequestWhere(filters);
   const offset = (filters.page - 1) * PAGE_SIZE;
-  const [tableResult, countResult, mattersResult] = await Promise.all([
+  const [tableResult, countResult, mattersResult, applicationCountResult] = await Promise.all([
     pool.query(
       `SELECT id, created_at, name, phone, service, status, is_read, LEFT(message, 100) AS message
        FROM consultations ${where.sql}
@@ -86,10 +86,12 @@ export default async function AdminDashboard({ searchParams }) {
        FROM consultations`,
       where.values
     ),
+    pool.query("SELECT COUNT(*) FILTER (WHERE is_read = false)::int AS new_count FROM job_applications"),
     pool.query('SELECT DISTINCT service FROM consultations ORDER BY service'),
   ]);
   const rows = tableResult.rows;
   const summary = countResult.rows[0];
+  const newApplications = applicationCountResult.rows[0].new_count;
   const totalRows = summary.filtered_count;
   const totalPages = Math.max(1, Math.ceil(totalRows / PAGE_SIZE));
   const exportQuery = queryString(filters, 1);
@@ -116,6 +118,7 @@ export default async function AdminDashboard({ searchParams }) {
           <Metric label="This week" value={summary.week_count} Icon={CalendarDays} />
           <Metric label="Contacted" value={summary.contacted_count} Icon={Clock3} />
           <Metric label="Closed" value={summary.closed_count} Icon={CheckCircle2} />
+          <Metric label="New applications" value={newApplications} Icon={BriefcaseBusiness} highlight />
         </section>
 
         <form className="admin-filters" method="get">

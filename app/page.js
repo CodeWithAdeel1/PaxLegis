@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { SITE, SERVICES, waLink } from '../lib/site';
 import { ArrowRight, CalendarDays, Check, CheckCircle2, ChevronDown, Landmark, Scale, SERVICE_ICONS, WhatsApp } from '../lib/icons';
 import { ArrowUpRight, BriefcaseBusiness, FileCheck2, Globe2, LockKeyhole, MonitorSmartphone } from 'lucide-react';
+import { JOBS } from '../lib/jobs';
 
 export const metadata = {
   title: { absolute: 'Lawyers in Pakistan | PaxLegis' },
@@ -74,7 +75,7 @@ export default function Home() {
             <h2>Start with your matter</h2>
             <div className="hero-quick-links">
               {[
-                { slug: 'family-litigation', label: 'Family law', Icon: SERVICE_ICONS.family },
+                { slug: 'family-litigation', label: 'Family Litigation', Icon: SERVICE_ICONS.family },
                 { slug: 'criminal-defence', label: 'Criminal defence', Icon: SERVICE_ICONS.criminal },
                 { slug: 'overseas-clients', label: 'Overseas clients', Icon: SERVICE_ICONS.overseas },
               ].map(({ slug, label, Icon }) => (
@@ -88,6 +89,9 @@ export default function Home() {
         </div>
       </section>
 
+      {JOBS.find((job) => job.open && job.slug === 'associate-advocate') && (
+        <Link className="hiring-strip" href="/careers"><span><BriefcaseBusiness aria-hidden="true" />We are hiring: Associate Advocate</span><strong>Explore role <ArrowUpRight aria-hidden="true" /></strong></Link>
+      )}
       <section className="trust-strip" aria-label="How we support clients">
         <div className="wrap trust-items">
           <p><span><Landmark size={19} aria-hidden="true" /></span><strong>Pakistan courts</strong><small>Guidance on matters connected to Pakistan</small></p>

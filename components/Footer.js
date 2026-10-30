@@ -34,6 +34,7 @@ export default function Footer() {
             <li><Link href="/">Home</Link></li>
             <li><Link href="/about">About PaxLegis</Link></li>
             <li><Link href="/book">Book online consultation</Link></li>
+            <li><Link href="/careers">Careers</Link></li>
             <li><Link href="/overseas-clients">Overseas clients</Link></li>
           </ul>
         </div>

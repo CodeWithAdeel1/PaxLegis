@@ -4,7 +4,7 @@ Next.js App Router + PostgreSQL. The current package uses Next.js 16 and require
 
 ## Features
 - 7 dedicated practice-area pages (separate URLs for SEO and Google Ads landing pages)
-- Practice-specific one-click WhatsApp ("Hi, I need Family Law advice") and Email buttons
+- Practice-specific one-click WhatsApp ("Hi, I need Family Litigation advice") and Email buttons
 - Floating WhatsApp button, "Book Online Consultation" form saved to PostgreSQL
 - SEO: unique title/description/keywords, canonical URLs, Open Graph, JSON-LD (LegalService, Service, FAQPage, BreadcrumbList), `sitemap.xml`, `robots.txt`
 - Performance: no external fonts or UI libraries, static generation, minimal JS
@@ -107,6 +107,19 @@ Deploy on Vercel, or any VPS with Node + Nginx + PM2 (`pm2 start npm --name paxl
 4. Get genuine reviews and links from legal directories and local listings.
 5. Add real office address, lawyer profiles and case-type articles over time. No code can guarantee a #1 position.
 6. Replace all `TODO` firm details, verify page titles and descriptions, and test social previews and structured data with Google and social-platform tools.
+
+## Careers
+
+Public vacancies are managed in `lib/jobs.js`. Set a job's `open` field to `true` to publish it or `false` to close it. To add a role, copy the existing job object, give it a unique `slug`, and complete the content and TODO fields. CVs must be PDF, DOC or DOCX and no larger than 2 MB.
+
+TODO values that must be confirmed before publication include:
+- Associate Advocate work location/city in `lib/jobs.js` (`location` currently says Pakistan).
+- `datePosted`, the actual posting date.
+- `validThrough`, the actual application closing date.
+- Any confirmed relevant court-experience requirement and additional verified benefits.
+- Verified firm address and official logo in `lib/site.js`, when required for richer job structured data.
+
+Share the public careers page at `/careers` on LinkedIn, or share an individual vacancy URL such as `/careers/associate-advocate`. The page includes a LinkedIn sharing action and custom Careers social preview.
 
 ## Notes
 - Replace the placeholder phone, email and WhatsApp number before launch.

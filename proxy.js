@@ -3,7 +3,7 @@ import { jwtVerify } from 'jose';
 
 const ADMIN_COOKIE = 'paxlegis_admin';
 
-export async function middleware(request) {
+export async function proxy(request) {
   const pathname = request.nextUrl.pathname;
   if (pathname === '/admin/login' || pathname === '/api/admin/login') return NextResponse.next();
 

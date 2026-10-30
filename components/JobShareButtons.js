@@ -1,0 +1,4 @@
+'use client';
+import { useState } from 'react';
+import { Link as LinkIcon, Share2, MessageCircle } from 'lucide-react';
+export default function JobShareButtons({ url, title }) { const [copied,setCopied]=useState(false); function copy(){navigator.clipboard.writeText(url).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2000)});} return <div className="job-share" aria-label="Share this position"><button type="button" onClick={copy}><LinkIcon aria-hidden="true" />{copied?'Link copied':'Copy link'}</button><a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer"><Share2 aria-hidden="true" />LinkedIn</a><a href={`https://wa.me/?text=${encodeURIComponent(`${title} — ${url}`)}`} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" />WhatsApp</a></div>; }
